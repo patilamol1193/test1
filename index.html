@@ -1,7 +1,30 @@
+<!DOCTYPE html>
 <html>
-<body>
+<head>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+</head>
 
-<h1>you have successfully run this file via jenkins<h1>
+<body onload="startTime()">
 
-</html>
+<h1>This file is deployed from git repository<h1>
+<h2>Running on Tomcat server 9.x<h2>
+<div id="txt"></div>
+
 </body>
+</html>
